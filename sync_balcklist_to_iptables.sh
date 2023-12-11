@@ -16,8 +16,15 @@ fi
 BANLIST_URL="https://raw.githubusercontent.com/fgladu/SRC_IP_Blacklist/main/blacklist.txt"
 CHAIN_NAME="BANLIST"
 
+<<<<<<< HEAD
 # Full paths to executables
 /sbin/iptables -N $CHAIN_NAME 2>/dev/null
+=======
+# Create the chain if it doesn't exist
+/sbin/iptables -N $CHAIN_NAME 2>/dev/null
+
+# Flush existing rules in the chain
+>>>>>>> main
 /sbin/iptables -F $CHAIN_NAME
 
 # Download the banlist from the URL and read each IP to add to the BANLIST chain
