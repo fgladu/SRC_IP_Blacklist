@@ -13,10 +13,10 @@ BANLIST_URL="https://raw.githubusercontent.com/fgladu/SRC_IP_Blacklist/main/blac
 CHAIN_NAME="BANLIST"
 
 # Create the chain if it doesn't exist
-iptables -N $CHAIN_NAME 2>/dev/null
+/sbin/iptables -N $CHAIN_NAME 2>/dev/null
 
 # Flush existing rules in the chain
-iptables -F $CHAIN_NAME
+/sbin/iptables -F $CHAIN_NAME
 
 # Download the banlist from the URL and read each IP to add to the BANLIST chain
 while read -r IP; do
@@ -27,8 +27,8 @@ while read -r IP; do
 done < <(curl -s "$BANLIST_URL")
 
 # Redirect traffic to the BANLIST chain
-iptables -I INPUT -j $CHAIN_NAME
-iptables -I OUTPUT -j $CHAIN_NAME
+/sbin/iptables -I INPUT -j $CHAIN_NAME
+/sbin/iptables -I OUTPUT -j $CHAIN_NAME
 
 # Save the iptables rules
 service iptables save
