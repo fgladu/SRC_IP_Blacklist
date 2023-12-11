@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Set environment variables
+export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+
 # Check if script is run as root
 if [[ $EUID -ne 0 ]]; then
 		echo "Veuillez exécuter ce script en tant que superutilisateur (root)."
